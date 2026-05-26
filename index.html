@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vũ Bảo Trung — TrungSteel AI Link Bio</title>
+    <meta name="description" content="Kênh tổng hợp link mua hàng Shopee chính hãng và chia sẻ kiến thức AI của anh Vũ Bảo Trung.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070714;
+            --bg-card: rgba(22, 22, 46, 0.7);
+            --primary: #ff7675;
+            --secondary: #6c5ce7;
+            --accent: #00d2ff;
+            --text-main: #f5f5fc;
+            --text-sub: #b2bec3;
+            --border: rgba(108, 92, 231, 0.2);
+            --gradient: linear-gradient(135deg, #6c5ce7 0%, #00d2ff 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(108, 92, 231, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.15) 0%, transparent 40%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* PROFILE HEADER */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin-bottom: 16px;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: -4px;
+            background: var(--gradient);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(8px);
+            opacity: 0.8;
+            animation: pulse 3s infinite alternate;
+        }
+
+        .avatar-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #16162e;
+            object-fit: cover;
+            z-index: 2;
+        }
+
+        .profile-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #fff 40%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .profile-title {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .profile-bio {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        /* SOCIAL ICONS */
+        .social-group {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            z-index: 3;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            color: var(--accent);
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            align-self: flex-start;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-sub);
+            margin: 20px 0 12px 10px;
+            border-left: 3px solid var(--secondary);
+            padding-left: 10px;
+        }
+
+        /* BIO LINK CARDS */
+        .links-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .link-card {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px) scale(1.01);
+            border-color: rgba(0, 210, 255, 0.4);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.15);
+            background: rgba(22, 22, 46, 0.9);
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .link-icon {
+            font-size: 1.6rem;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .link-content {
+            flex-grow: 1;
+        }
+
+        .link-title {
+            font-size: 1.02rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .link-desc {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        .link-arrow {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        .link-card:hover .link-arrow {
+            transform: translateX(4px);
+            color: var(--accent);
+        }
+
+        .hot-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 100px;
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 48px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.05); opacity: 0.9; }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            body { padding: 24px 16px; }
+            .profile-name { font-size: 1.4rem; }
+            .link-card { padding: 14px 16px; }
+            .link-title { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PROFILE HEADER -->
+        <header class="profile-header">
+            <div class="avatar-container" style="margin: 0 auto 16px;">
+                <div class="avatar-glow"></div>
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Vũ Bảo Trung" class="avatar-img">
+            </div>
+            <h1 class="profile-name">Vũ Bảo Trung</h1>
+            <p class="profile-title">TrungSteel AI founder</p>
+            <p class="profile-bio">Chia sẻ giải pháp ứng dụng Trí Tuệ Nhân Tạo (AI) tối ưu kinh doanh online & phong cách sống khỏe tự nhiên.</p>
+        </header>
+
+        <!-- SOCIAL LINKS -->
+        <div class="social-group">
+            <a href="https://facebook.com" class="social-link" title="Facebook">FB</a>
+            <a href="https://youtube.com" class="social-link" title="YouTube">YT</a>
+            <a href="https://tiktok.com" class="social-link" title="TikTok">TT</a>
+            <a href="mailto:vb.trung79@gmail.com" class="social-link" title="Email">✉</a>
+        </div>
+
+        <!-- AFFILIATE PRODUCTS -->
+        <h2 class="section-title">🛒 SẢN PHẨM KHUYÊN DÙNG (Shopee Affiliate)</h2>
+        <div class="links-group">
+            <a href="https://shopee.vn/search?keyword=collagen+82x" target="_blank" class="link-card">
+                <span class="hot-badge">Hot</span>
+                <span class="link-icon">💧</span>
+                <div class="link-content">
+                    <h3 class="link-title">Collagen Nước 82X Sakura</h3>
+                    <p class="link-desc">Trẻ hóa da cao cấp nhập khẩu Nhật Bản chính hãng.</p>
+                </div>
+                <span class="link-arrow">➔</span>
+            </a>
+
+            <a href="https://shopee.vn/search?keyword=vitamin+c+dhc" target="_blank" class="link-card">
+                <span class="link-icon">🍋</span>
+                <div class="link-content">
+                    <h3 class="link-title">Viên Uống Vitamin C DHC 90 Ngày</h3>
+                    <p class="link-desc">Tăng sức đề kháng, sáng da tự nhiên, bán chạy nhất.</p>
+                </div>
+                <span class="link-arrow">➔</span>
+            </a>
+
+            <a href="https://shopee.vn/search?keyword=may+do+huyet+ap+omron" target="_blank" class="link-card">
+                <span class="link-icon">🩺</span>
+                <div class="link-content">
+                    <h3 class="link-title">Máy Đo Huyết Áp Bắp Tay Omron</h3>
+                    <p class="link-desc">Thiết bị đo huyết áp tự động độ chính xác cao tại nhà.</p>
+                </div>
+                <span class="link-arrow">➔</span>
+            </a>
+
+            <a href="https://shopee.vn/search?keyword=goi+massage+co+vai+gay" target="_blank" class="link-card">
+                <span class="link-icon">💆‍♂️</span>
+                <div class="link-content">
+                    <h3 class="link-title">Gối Massage Cổ Vai Gáy Đa Năng</h3>
+                    <p class="link-desc">Trị liệu giảm nhức mỏi cơ văn phòng & lái xe cực hiệu quả.</p>
+                </div>
+                <span class="link-arrow">➔</span>
+            </a>
+        </div>
+
+        <!-- KNOWLEDGE SHARING -->
+        <h2 class="section-title">💡 KIẾN THỨC KINH DOANH & AI</h2>
+        <div class="links-group">
+            <a href="./landing.html" class="link-card">
+                <span class="link-icon">⚡</span>
+                <div class="link-content">
+                    <h3 class="link-title">Đội Ngũ AI Kinh Doanh Tự Động</h3>
+                    <p class="link-desc">Cách Rose (AI Assistant) vận hành marketing cho tôi 24/7.</p>
+                </div>
+                <span class="link-arrow">➔</span>
+            </a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2026 TrungSteel AI • Vũ Bảo Trung</p>
+        </footer>
+    </div>
+</body>
+</html>
